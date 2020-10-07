@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import { initialState, featureReducer } from "../reducers/featureReducer";
+import { connect } from "react-redux";
 
 const AdditionalFeature = ({ dispatch, feature }) => {
   return (

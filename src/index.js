@@ -24,7 +24,7 @@ const store = createStore(featureReducer);
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <Provider context={MyContext} store={store}>
+  <Provider store={store}>
     <App />
   </Provider>,
   rootElement
