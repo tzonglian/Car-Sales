@@ -27,7 +27,7 @@ const App = (props) => {
     <div className="boxes">
       <div className="box">
         <Header />
-        <AddedFeatures car={props.car} />
+        <AddedFeatures />
       </div>
       <div className="box">
         <AdditionalFeatures />
@@ -37,6 +37,7 @@ const App = (props) => {
   );
 };
 
+// *** Passing Store's state to App's props (part 1)
 const mapStateToProps = (state) => {
   return {
     additionalPrice: state.additionalPrice,
@@ -45,5 +46,5 @@ const mapStateToProps = (state) => {
   };
 };
 
+// Connects App's props to Store's state (part 2)
 export default connect(mapStateToProps)(App);
-//export default App;

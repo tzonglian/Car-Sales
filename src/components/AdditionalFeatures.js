@@ -1,25 +1,20 @@
 import React, { useEffect, useReducer } from "react";
 import AdditionalFeature from "./AdditionalFeature";
-import { initialState, featureReducer } from "../reducers/featureReducer";
 import { connect } from "react-redux";
 
-const AdditionalFeatures = () => {
-  const [state, dispatch] = useReducer(featureReducer, initialState);
-
-  useEffect(() => {
-    console.log(state);
-  });
+const AdditionalFeatures = (props) => {
+  // const [state, dispatch] = useReducer(featureReducer, initialState);
 
   return (
     <div className="content">
       <h4>Additional Features</h4>
-      {state.additionalFeatures.length ? (
+      {props.additionalFeatures.length ? (
         <ol type="1">
-          {state.additionalFeatures.map((item) => (
+          {props.additionalFeatures.map((item) => (
             <AdditionalFeature
               key={item.id}
               feature={item}
-              dispatch={dispatch}
+              // dispatch={dispatch}
             />
           ))}
         </ol>
@@ -30,4 +25,12 @@ const AdditionalFeatures = () => {
   );
 };
 
-export default AdditionalFeatures;
+// Connects AdditionalFeature's props to Store's state
+const mapStatetoProps = (state) => {
+  return {
+    additionalPrice: state.additionalPrice,
+    car: state.car,
+    additionalFeatures: state.additionalFeatures,
+  };
+}
+export default connect(mapStatetoProps)(AdditionalFeatures);

@@ -1,18 +1,26 @@
 import React, { useReducer } from "react";
 import { initialState, featureReducer } from "../reducers/featureReducer";
+import { connect } from "react-redux";
 
-const Header = () => {
-  const [state, dispatch] = useReducer(featureReducer, initialState);
+const Header = (props) => {
+  //const [state, dispatch] = useReducer(featureReducer, initialState);
 
   return (
     <>
       <figure className="image is-128x128">
-        <img src={state.car.image} alt={state.car.name} />
+        <img src={props.car.image} alt={props.car.name} />
       </figure>
-      <h2>{state.car.name}</h2>
-      <p>Amount: ${state.car.price}</p>
+      <h2>{props.car.name}</h2>
+      <p>Amount: ${props.car.price}</p>
     </>
   );
 };
 
-export default Header;
+const mapStatetoProps = (state) => {
+  return {
+    additionalPrice: state.additionalPrice,
+    car: state.car,
+    additionalFeatures: state.additionalFeatures,
+  };
+};
+export default connect(mapStatetoProps)(Header);
