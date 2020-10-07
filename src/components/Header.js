@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useReducer } from "react";
+import { initialState, featureReducer } from "../reducers/featureReducer";
 
-const Header = props => {
+const Header = () => {
+  const [state, dispatch] = useReducer(featureReducer, initialState);
+
   return (
     <>
       <figure className="image is-128x128">
-        <img src={props.car.image} alt={props.car.name} />
+        <img src={state.car.image} alt={state.car.name} />
       </figure>
-      <h2>{props.car.name}</h2>
-      <p>Amount: ${props.car.price}</p>
+      <h2>{state.car.name}</h2>
+      <p>Amount: ${state.car.price}</p>
     </>
   );
 };
